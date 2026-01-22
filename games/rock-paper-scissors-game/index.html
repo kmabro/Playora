@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="game-container">
+        <!-- Title -->
+        <h1 class="game-title">Rock Paper Scissors</h1>
+
+        <!-- Mode Selector -->
+        <section class="mode-section">
+            <div class="mode-toggle">
+                <button class="mode-btn active" data-mode="ai">vs AI</button>
+                <button class="mode-btn" data-mode="human">vs Human</button>
+            </div>
+        </section>
+
+        <!-- Battle Arena -->
+        <section class="arena">
+            <div class="player-display">
+                <span class="player-label" id="player1Label">You</span>
+                <div class="choice-circle" id="player1Choice">❓</div>
+            </div>
+            <span class="vs">VS</span>
+            <div class="player-display">
+                <span class="player-label" id="player2Label">AI</span>
+                <div class="choice-circle" id="player2Choice">❓</div>
+            </div>
+        </section>
+
+        <!-- Turn Indicator (Human vs Human) -->
+        <div class="turn-indicator hidden" id="turnIndicator">
+            <span id="turnText">Player 1's Turn</span>
+        </div>
+
+        <!-- Choice Buttons -->
+        <section class="choices">
+            <button class="choice-btn" data-choice="rock" aria-label="Rock">✊</button>
+            <button class="choice-btn" data-choice="paper" aria-label="Paper">✋</button>
+            <button class="choice-btn" data-choice="scissors" aria-label="Scissors">✌️</button>
+        </section>
+
+        <!-- Result -->
+        <div class="result" id="result">Choose your move!</div>
+
+        <!-- Scoreboard -->
+        <section class="scoreboard">
+            <div class="score-item">
+                <span class="score-label" id="score1Label">You</span>
+                <span class="score-value win" id="score1">0</span>
+            </div>
+            <div class="score-item">
+                <span class="score-label">Draws</span>
+                <span class="score-value draw" id="scoreDraw">0</span>
+            </div>
+            <div class="score-item">
+                <span class="score-label" id="score2Label">AI</span>
+                <span class="score-value lose" id="score2">0</span>
+            </div>
+        </section>
+
+        <!-- Reset Button -->
+        <button class="reset-btn" id="resetBtn">🔄 Reset</button>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

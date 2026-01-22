@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Sliding Puzzle Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="game-container">
+        <header class="game-header">
+            <h1>Sliding Puzzle</h1>
+        </header>
+
+        <section class="controls">
+            <div class="size-selector">
+                <label for="board-size">Board Size:</label>
+                <select id="board-size">
+                    <option value="3">3×3</option>
+                    <option value="4">4×4</option>
+                </select>
+            </div>
+            <div class="move-counter">
+                <span>Moves:</span>
+                <span id="moves">0</span>
+            </div>
+        </section>
+
+        <section class="board-wrapper">
+            <div id="game-board" class="game-board"></div>
+        </section>
+
+        <section class="actions">
+            <button id="shuffle-btn" class="btn">Shuffle</button>
+            <button id="hint-btn" class="btn btn-hint">Get Hint</button>
+        </section>
+
+        <div id="win-message" class="win-message hidden">
+            <div class="win-content">
+                <h2>🎉 Congratulations!</h2>
+                <p>You solved the puzzle in <span id="final-moves">0</span> moves!</p>
+                <button id="play-again-btn" class="btn">Play Again</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

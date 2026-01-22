@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Word Scramble Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1 class="game-title"><span class="game-icon">🔤</span> Word Scramble</h1>
+            <div class="header-controls">
+                <button id="sound-toggle" class="icon-btn" aria-label="Toggle Sound">
+                    <span class="sound-on">🔊</span>
+                    <span class="sound-off hidden">🔇</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="score-section">
+            <div class="score-display">
+                <span class="score-label">Score</span>
+                <span id="score" class="score-value">0</span>
+            </div>
+            <div class="streak-display">
+                <span class="streak-label">Streak</span>
+                <span id="streak" class="streak-value">0</span>
+            </div>
+        </div>
+
+
+
+        <div class="word-section">
+            <div id="scrambled-word" class="scrambled-word">
+                <!-- Scrambled letters will be inserted here -->
+            </div>
+            <div id="hint-display" class="hint-display hidden">
+                <span class="hint-label">Hint:</span>
+                <span id="hint-text" class="hint-text"></span>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <input 
+                type="text" 
+                id="answer-input" 
+                class="answer-input" 
+                placeholder="Type your answer..." 
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+            >
+            <div id="feedback" class="feedback"></div>
+        </div>
+
+        <div class="button-section">
+            <button id="submit-btn" class="game-btn submit-btn">
+                <span class="btn-icon">✓</span>
+                <span class="btn-text">Submit</span>
+            </button>
+            <button id="hint-btn" class="game-btn hint-btn">
+                <span class="btn-icon">💡</span>
+                <span class="btn-text">Hint</span>
+            </button>
+            <button id="skip-btn" class="game-btn skip-btn">
+                <span class="btn-icon">⏭</span>
+                <span class="btn-text">Skip</span>
+            </button>
+            <button id="reset-btn" class="game-btn reset-btn">
+                <span class="btn-icon">🔄</span>
+                <span class="btn-text">Reset</span>
+            </button>
+        </div>
+
+
+    </div>
+
+    <div id="celebration" class="celebration hidden">
+        <div class="confetti"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

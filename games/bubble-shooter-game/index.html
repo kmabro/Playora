@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Bubble Shooter - A fun puzzle game">
+    <title>Bubble Shooter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <header id="header">
+            <h1 id="game-title">Bubble Shooter</h1>
+            <div id="header-controls">
+                <button id="pause-btn" title="Pause Game">⏸</button>
+                <div id="score-container">
+                    <span id="score-label">Score:</span>
+                    <span id="score-value">0</span>
+                </div>
+            </div>
+        </header>
+        
+        <main id="game-area">
+            <canvas id="game-canvas"></canvas>
+            
+            <div id="paused-overlay" class="hidden">
+                <div id="paused-content">
+                    <h2>Paused</h2>
+                    <button id="resume-btn">▶ Resume</button>
+                </div>
+            </div>
+            
+            <div id="game-over-overlay" class="hidden">
+                <div id="game-over-content">
+                    <h2>Game Over!</h2>
+                    <p>Final Score: <span id="final-score">0</span></p>
+                    <p class="high-score-line">Highest Score: <span id="high-score">0</span></p>
+                    <p id="new-record" class="hidden">🎉 New Record!</p>
+                    <button id="restart-btn">Play Again</button>
+                </div>
+            </div>
+        </main>
+        
+        <footer id="footer">
+            <button id="new-game-btn">New Game</button>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

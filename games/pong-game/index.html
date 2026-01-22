@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Pong Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="game-wrapper">
+        <header class="game-header">
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="ai">vs AI</button>
+                <button class="mode-btn" data-mode="pvp">vs Human</button>
+            </div>
+        </header>
+
+        <section class="scoreboard">
+            <div class="player-score">
+                <span class="player-label" id="player1Label">You</span>
+                <span class="score" id="score1">0</span>
+            </div>
+            <div class="divider">-</div>
+            <div class="player-score">
+                <span class="player-label" id="player2Label">AI</span>
+                <span class="score" id="score2">0</span>
+            </div>
+        </section>
+
+        <section class="game-container" id="gameContainer">
+            <div class="center-line"></div>
+            <div class="paddle paddle-left" id="paddleLeft"></div>
+            <div class="paddle paddle-right" id="paddleRight"></div>
+            <div class="ball" id="ball"></div>
+            <div class="touch-zone touch-zone-left" id="touchZoneLeft"></div>
+            <div class="touch-zone touch-zone-right" id="touchZoneRight"></div>
+            <div class="start-message" id="startMessage">Press SPACE or Tap to Start</div>
+        </section>
+
+        <div class="controls">
+            <button class="reset-btn" id="resetBtn">Reset Game</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

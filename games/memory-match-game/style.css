@@ -1,0 +1,318 @@
+/* Reset and Base Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --success-color: #27ae60;
+    --bg-color: #1a1a2e;
+    --card-bg: #16213e;
+    --card-front: #0f3460;
+    --text-color: #ecf0f1;
+    --text-muted: #bdc3c7;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --transition-speed: 0.5s;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--bg-color) 0%, #16213e 100%);
+    height: 100dvh;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0.3rem;
+    overflow: hidden;
+}
+
+/* Game Container */
+.game-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    overflow: hidden;
+}
+
+/* Header Styles */
+.game-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.4rem;
+    background: var(--card-bg);
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    flex-shrink: 0;
+}
+
+h1 {
+    font-size: clamp(1rem, 3.5vw, 2.5rem);
+    color: var(--secondary-color);
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.stats {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: clamp(0.75rem, 2vw, 1.25rem);
+}
+
+.stat-label {
+    color: var(--text-muted);
+}
+
+.stat-value {
+    font-weight: bold;
+    color: var(--secondary-color);
+    min-width: 2rem;
+    text-align: center;
+}
+
+.stat-total {
+    color: var(--text-muted);
+}
+
+/* Restart Button */
+.restart-btn {
+    padding: 0.4rem 1.2rem;
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    font-weight: bold;
+    color: var(--text-color);
+    background: linear-gradient(135deg, var(--secondary-color), #2980b9);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: var(--shadow);
+}
+
+.restart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.restart-btn:active {
+    transform: translateY(0);
+}
+
+/* Game Board */
+.game-board {
+    display: grid;
+    gap: clamp(0.15rem, 0.5vw, 0.5rem);
+    width: 100%;
+    max-width: 1000px;
+    padding: 0.3rem;
+    background: var(--card-bg);
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* Responsive Grid Layouts */
+/* Mobile - 5 columns, 8 rows */
+@media (max-width: 600px) {
+    .game-board {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+        height: calc(100dvh - 6rem);
+    }
+    
+    .tile-inner {
+        border-radius: 0.3rem;
+    }
+    
+    .tile-face {
+        border-radius: 0.3rem;
+    }
+}
+
+/* Small tablets - 5 columns */
+@media (min-width: 601px) and (max-width: 768px) {
+    .game-board {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+    }
+}
+
+/* Large tablets and small desktops - 8 columns */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .game-board {
+        grid-template-columns: repeat(8, 1fr);
+    }
+    
+    .tile {
+        aspect-ratio: 1;
+    }
+}
+
+/* Desktop - 10 columns */
+@media (min-width: 1025px) {
+    .game-board {
+        grid-template-columns: repeat(10, 1fr);
+    }
+    
+    .tile {
+        aspect-ratio: 1;
+    }
+}
+
+/* Tile Styles */
+.tile {
+    perspective: 1000px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    min-width: 0;
+    min-height: 0;
+}
+
+.tile-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform var(--transition-speed) ease-in-out;
+    border-radius: 0.5rem;
+}
+
+.tile.flipped .tile-inner {
+    transform: rotateY(180deg);
+}
+
+.tile-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow);
+}
+
+.tile-back {
+    background: linear-gradient(135deg, var(--secondary-color), #2980b9);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.tile-back::after {
+    content: '?';
+    font-size: clamp(1rem, 3vw, 2.5rem);
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.tile-front {
+    background: var(--card-front);
+    transform: rotateY(180deg);
+    border: 2px solid var(--secondary-color);
+    padding: 10%;
+}
+
+.tile-front svg {
+    width: 100%;
+    height: 100%;
+}
+
+.tile.matched .tile-front {
+    border-color: var(--success-color);
+    background: linear-gradient(135deg, #1e4d3a, #16213e);
+}
+
+.tile.matched .tile-front svg {
+    filter: drop-shadow(0 0 5px var(--success-color));
+}
+
+/* Disable pointer events on flipped or matched tiles */
+.tile.flipped,
+.tile.matched {
+    pointer-events: none;
+}
+
+.tile.checking {
+    pointer-events: none;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 100%;
+}
+
+.modal-content h2 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom: 1rem;
+    color: var(--success-color);
+}
+
+.modal-content p {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+}
+
+.modal-content #final-moves {
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+/* SVG Shape Colors */
+.shape-svg {
+    fill: none;
+    stroke: var(--secondary-color);
+    stroke-width: 2;
+}
+
+.tile.matched .shape-svg {
+    stroke: var(--success-color);
+}

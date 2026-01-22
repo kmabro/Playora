@@ -1,0 +1,467 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #000000;
+    color: #fff;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+}
+
+/* Game Container */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile */
+    max-height: 100vh;
+    max-height: 100dvh;
+    background: #000000;
+    overflow: hidden;
+}
+
+/* Header Styles */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px;
+    background: #000000;
+    border-bottom: 2px solid #00ffff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    flex-shrink: 0;
+    min-height: 50px;
+    z-index: 20;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.header-stats {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.game-title {
+    font-size: clamp(0.9rem, 3vw, 1.5rem);
+    font-weight: bold;
+    color: #ffff00;
+    text-shadow: 
+        0 0 10px #ffff00,
+        0 0 20px #ffff00;
+    letter-spacing: 2px;
+}
+
+.header-right {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.icon-btn {
+    width: 34px;
+    height: 34px;
+    background: transparent;
+    border: 2px solid #00ffff;
+    border-radius: 6px;
+    color: #00ffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.icon-btn:hover, .icon-btn:active {
+    background: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.icon-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Main Game Area */
+.game-main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 5px;
+    min-height: 0;
+    background: #000000;
+}
+
+#gameCanvas {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    border: 3px solid #00ffff;
+    border-radius: 5px;
+    box-shadow: 
+        0 0 20px rgba(0, 255, 255, 0.5),
+        inset 0 0 50px rgba(0, 255, 255, 0.1);
+}
+
+/* Overlay Screens */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.overlay-content {
+    text-align: center;
+    padding: 40px;
+    background: rgba(20, 20, 50, 0.95);
+    border: 3px solid #00ffff;
+    border-radius: 20px;
+    box-shadow: 
+        0 0 30px rgba(0, 255, 255, 0.5),
+        inset 0 0 30px rgba(0, 255, 255, 0.1);
+}
+
+.neon-text {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: bold;
+    color: #ffff00;
+    text-shadow: 
+        0 0 10px #ffff00,
+        0 0 20px #ffff00,
+        0 0 40px #ff8800,
+        0 0 80px #ff8800;
+    margin-bottom: 20px;
+    letter-spacing: 5px;
+}
+
+.neon-text.red {
+    color: #ff0000;
+    text-shadow: 
+        0 0 10px #ff0000,
+        0 0 20px #ff0000,
+        0 0 40px #ff4444;
+}
+
+.neon-text.green {
+    color: #00ff00;
+    text-shadow: 
+        0 0 10px #00ff00,
+        0 0 20px #00ff00,
+        0 0 40px #44ff44;
+}
+
+.overlay-content p {
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+.neon-btn {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #00ffff;
+    background: transparent;
+    border: 3px solid #00ffff;
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.neon-btn:hover, .neon-btn:active {
+    background: rgba(0, 255, 255, 0.2);
+    box-shadow: 
+        0 0 30px rgba(0, 255, 255, 0.6),
+        inset 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+/* Stats in Header */
+.stat {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+}
+
+.stat-label {
+    font-size: 0.65rem;
+    color: #00ffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.stat-value {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+}
+
+.lives-icons {
+    display: flex;
+    gap: 3px;
+}
+
+.life-icon {
+    font-size: 1.2rem;
+    color: #ffff00;
+    text-shadow: 0 0 8px rgba(255, 255, 0, 0.7);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .game-header {
+        padding: 4px 8px;
+        min-height: 44px;
+    }
+
+    .game-title {
+        letter-spacing: 1px;
+        font-size: 0.85rem;
+    }
+
+    .icon-btn {
+        width: 28px;
+        height: 28px;
+    }
+
+    .icon-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .header-right {
+        gap: 4px;
+    }
+    
+    .header-stats {
+        gap: 12px;
+    }
+
+    .stat-label {
+        font-size: 0.5rem;
+    }
+
+    .stat-value {
+        font-size: 0.85rem;
+    }
+
+    .life-icon {
+        font-size: 0.85rem;
+    }
+    
+    .stat {
+        gap: 4px;
+    }
+
+    .overlay-content {
+        padding: 20px;
+        margin: 15px;
+    }
+
+    .neon-btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+    }
+    
+    .neon-text {
+        font-size: 1.8rem;
+        letter-spacing: 3px;
+    }
+    
+    .overlay-content p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+    
+    .dpad-container {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .dpad-btn {
+        width: 42px;
+        height: 42px;
+    }
+}
+
+@media (max-height: 600px) {
+    .game-header {
+        min-height: 36px;
+        padding: 3px 8px;
+    }
+
+    .game-title {
+        font-size: 0.8rem;
+    }
+    
+    .header-stats {
+        gap: 10px;
+    }
+    
+    .stat-label {
+        font-size: 0.5rem;
+    }
+    
+    .stat-value {
+        font-size: 0.75rem;
+    }
+    
+    .life-icon {
+        font-size: 0.75rem;
+    }
+    
+    .dpad-container {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .dpad-btn {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .dpad-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* D-Pad Styles - Always visible */
+.dpad-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: 10px auto;
+    flex-shrink: 0;
+    z-index: 50;
+    padding: 5px;
+}
+
+.dpad-btn {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    background: #000000;
+    border: 2px solid #00ffff;
+    border-radius: 8px;
+    color: #00ffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.1s ease;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: 
+        0 0 10px rgba(0, 255, 255, 0.4),
+        inset 0 0 5px rgba(0, 255, 255, 0.1);
+}
+
+.dpad-btn:active {
+    background: rgba(0, 255, 255, 0.25);
+    box-shadow: 
+        0 0 25px rgba(0, 255, 255, 0.8),
+        inset 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.dpad-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+.dpad-up {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dpad-down {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dpad-left {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.dpad-right {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Touch device adjustments */
+@media (pointer: coarse) {
+    .dpad-btn {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .dpad-container {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes glow {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+    50% { 
+        box-shadow: 0 0 40px rgba(0, 255, 255, 0.8);
+    }
+}
+
+#gameCanvas {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Paused state */
+.game-paused #gameCanvas {
+    opacity: 0.5;
+}

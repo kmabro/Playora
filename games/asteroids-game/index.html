@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Classic Asteroids Arcade Game">
+    <title>Asteroids</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Game Title -->
+        <header id="game-header">
+            <h1>ASTEROIDS</h1>
+        </header>
+
+        <!-- HUD Display -->
+        <div id="hud">
+            <div id="score-display">
+                <span class="hud-label">SCORE</span>
+                <span id="score">0</span>
+            </div>
+            <div id="highscore-display">
+                <span class="hud-label">BEST</span>
+                <span id="highscore">0</span>
+            </div>
+            <div id="lives-display">
+                <span class="hud-label">LIVES</span>
+                <span id="lives">3</span>
+            </div>
+        </div>
+
+        <!-- Game Canvas -->
+        <canvas id="game-canvas"></canvas>
+
+        <!-- Game Over Overlay -->
+        <div id="game-over-overlay" class="hidden">
+            <div id="game-over-content">
+                <h2>GAME OVER</h2>
+                <p>Final Score: <span id="final-score">0</span></p>
+                <p class="highscore-text">Best: <span id="final-highscore">0</span></p>
+                <button id="restart-btn">PLAY AGAIN</button>
+            </div>
+        </div>
+
+        <!-- Start Screen Overlay -->
+        <div id="start-overlay">
+            <div id="start-content">
+                <h2>ASTEROIDS</h2>
+                <p class="instructions">Destroy all asteroids to survive!</p>
+                <button id="start-btn">START GAME</button>
+            </div>
+        </div>
+
+        <!-- Mobile Touch Controls - D-Pad Style -->
+        <div id="mobile-controls">
+            <div id="dpad-container">
+                <button id="btn-up" class="control-btn dpad-btn dpad-up" aria-label="Move Up">&#9650;</button>
+                <button id="btn-left" class="control-btn dpad-btn dpad-left" aria-label="Move Left">&#9664;</button>
+                <button id="btn-fire" class="control-btn fire-btn dpad-center" aria-label="Fire"></button>
+                <button id="btn-right" class="control-btn dpad-btn dpad-right" aria-label="Move Right">&#9654;</button>
+                <button id="btn-down" class="control-btn dpad-btn dpad-down" aria-label="Move Down">&#9660;</button>
+            </div>
+        </div>
+
+        <!-- Reset Button -->
+        <button id="reset-btn" aria-label="Reset Game">↻ RESET</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
